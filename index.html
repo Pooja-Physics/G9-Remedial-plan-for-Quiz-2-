@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Physics Remedial Mission – Grade 9 Advance</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--ink:#26324d;--mut:#64748b;--p:#6366f1;--g:#10b981;--o:#f59e0b;--r:#ef4444}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,Arial,sans-serif;color:var(--ink);background:linear-gradient(160deg,#fef6ff,#eef7ff 45%,#fff8ec);min-height:100vh;overflow-x:hidden}
+.bg span{position:fixed;font-size:28px;opacity:.18;animation:fl 9s ease-in-out infinite;pointer-events:none;z-index:0}
+@keyframes fl{50%{transform:translateY(-22px) rotate(12deg)}}
+main{position:relative;z-index:1;max-width:860px;margin:auto;padding:16px}
+.hero{background:#fff;border-radius:24px;padding:24px;box-shadow:0 8px 30px #6366f122;text-align:center;border:3px dashed #c7d2fe}
+h1{margin:0;font-size:clamp(24px,5vw,36px)}h2{margin:28px 0 10px}
+.hero p{color:var(--mut)}
+input.nm{font-size:18px;padding:12px 16px;border-radius:14px;border:2px solid #c7d2fe;width:min(100%,320px);text-align:center}
+.btn{background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;border:0;padding:12px 22px;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px #6366f155}
+.btn:hover{transform:translateY(-2px)}.btn.alt{background:linear-gradient(135deg,#10b981,#06b6d4)}
+.hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#fffffff2;backdrop-filter:blur(6px);border-radius:16px;padding:10px 14px;margin:14px 0;box-shadow:0 4px 16px #0001;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-weight:700;font-size:14px}
+.bar{flex:1;min-width:120px;height:14px;background:#e5e7eb;border-radius:9px;position:relative}
+.bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#f59e0b,#ec4899,#6366f1);transition:width .5s}
+.bar b{position:absolute;top:-9px;font-size:20px;transition:left .5s;transform:translateX(-50%)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.card{background:#fff;border-radius:18px;padding:16px;box-shadow:0 4px 18px #0000000f}
+.tc{border-top:6px solid var(--c)}.tc h3{margin:4px 0;font-size:15px}.tc ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:var(--mut)}
+.q{margin:14px 0;border-left:6px solid var(--c)}
+.q .tag{font-size:12px;font-weight:700;color:var(--c)}
+.q p{font-weight:600;margin:6px 0}
+.fig{max-width:330px;width:100%;display:block;margin:6px auto;background:#f8fafc;border-radius:12px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 14px;border-radius:12px;border:2px solid #e2e8f0;background:#fff;font-size:15px;cursor:pointer;color:var(--ink)}
+.opt:hover:not(:disabled){border-color:var(--p);background:#eef2ff}
+.opt.ok{background:#d1fae5;border-color:var(--g)}.opt.no{background:#fee2e2;border-color:var(--r)}
+.fb{margin-top:8px;font-size:14px;padding:8px 12px;border-radius:10px;background:#f1f5f9;display:none}
+textarea{width:100%;border-radius:12px;border:2px solid #e2e8f0;padding:8px;font:inherit;min-height:50px}
+.ans{display:none;background:#ecfdf5;border-radius:12px;padding:10px;margin:6px 0;font-size:14px}
+select{padding:6px;border-radius:8px;border:2px solid #c7d2fe;margin-top:4px}
+.tb{width:100%;border-collapse:collapse;font-size:14px;text-align:center}.tb td,.tb th{border:1px solid #e2e8f0;padding:4px}.tb th{background:#eef2ff}
+.rb{height:16px;background:#e5e7eb;border-radius:9px;overflow:hidden}.rb i{display:block;height:100%}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;color:#fff;font-size:12px;font-weight:700}
+.badge{display:inline-block;margin:4px;padding:8px 12px;background:#fff7e0;border:2px solid #fcd34d;border-radius:14px;font-weight:700;font-size:14px}
+.badge.lock{filter:grayscale(1);opacity:.45;background:#f1f5f9;border-color:#cbd5e1}
+.cf{position:fixed;top:-30px;font-size:24px;z-index:99;animation:dn 2.4s linear forwards;pointer-events:none}
+@keyframes dn{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+#res{display:none}
+</style></head><body>
+<div class="bg"><span style="left:4%;top:12%">⭐</span><span style="left:90%;top:20%">🚀</span><span style="left:8%;top:60%">🪐</span><span style="left:92%;top:70%">⚡</span><span style="left:48%;top:90%">🌈</span></div>
+<main>
+<div class="hero"><div style="font-size:48px">🚀🔬</div><h1>Physics Remedial Mission</h1>
+<p>Grade 9 Advance · Motion, Vectors &amp; Graphs · Al Rashidiya Girls' School</p>
+<p><b>Mission:</b> Review the concepts, answer 10 MCQs, try 3 challenge questions, earn badges and get your personal report!</p>
+<input id="nm" class="nm" placeholder="Type your name, explorer…"><br><br><button class="btn" onclick="start()">Start my mission ✨</button></div>
+
+<div id="app" style="display:none">
+<div class="hud"><span>⭐ XP: <span id="xp">0</span></span><span>🔥 Streak: <span id="st">0</span></span><span id="lv">Rookie Explorer</span><div class="bar"><i id="pb" style="width:0"></i><b id="rk" style="left:0">🚀</b></div><span id="pg">0/10</span></div>
+<div id="msg" class="card" style="text-align:center;font-weight:700">💪 Every mistake is a clue. Let's go!</div>
+
+<h2>📚 Quick Review Cards</h2><div class="grid" id="rev"></div>
+<h2>🎯 Part A: 10 Practice MCQs</h2><div id="mcq"></div>
+<h2>🧠 Part B: 3 Challenge Questions</h2>
+<p style="color:var(--mut)">Write your working in the box, press <b>Check</b>, then mark yourself honestly. Honest marking = real progress!</p><div id="frq"></div>
+<div style="text-align:center;margin:24px"><button class="btn alt" onclick="finish()">🏁 Finish &amp; see my report</button></div>
+
+<div id="res"><h2>🏆 My Progress Report</h2><div class="card" id="rc"></div>
+<h3>🎖️ Badges</h3><div id="bd"></div>
+<div style="text-align:center;margin:20px"><button class="btn" onclick="pdf()">📄 Download my PDF report</button> <button class="btn alt" onclick="location.reload()">🔄 Try again</button><p id="dm" style="color:var(--mut)"></p></div></div>
+</div></main>
+<script>
+const T=[
+{n:'Particle Models & Motion Diagrams',c:'#6366f1',i:'🔵',r:['Equal dot spacing = constant speed','Dots farther apart = speeding up','Dots closer together = slowing down'],tip:'Draw 3 dot diagrams (constant, speeding up, slowing down) and explain each in a sentence.'},
+{n:'Distance, Displacement & Variables',c:'#f97316',i:'🧭',r:['Distance = total path (scalar)','Displacement = straight line start→end (vector)','Independent = what you change; dependent = what you measure'],tip:'Redo the path problems: add up the path for distance, then draw a straight arrow start to end for displacement.'},
+{n:'Vectors vs. Scalars',c:'#10b981',i:'➡️',r:['Vector = magnitude + direction','Scalar = magnitude only (time, speed, distance)','Resultant = vector sum of vectors'],tip:'Make a two-column table of 10 quantities: vector or scalar? Then add opposite forces to find a resultant.'},
+{n:'Graphing & Slope',c:'#a855f7',i:'📈',r:['Position-time: slope = Δx ÷ Δt = velocity','Straight line = constant velocity; flat = at rest','Steeper line = faster'],tip:'Pick two clear points on a line, then calculate slope = rise ÷ run with units. Practise on 3 new graphs.'}];
+const ar=(x1,y1,x2,y2,c)=>{const a=Math.atan2(y2-y1,x2-x1),h=9;return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="3"/><polygon points="${x2},${y2} ${x2-h*Math.cos(a-.4)},${y2-h*Math.sin(a-.4)} ${x2-h*Math.cos(a+.4)},${y2-h*Math.sin(a+.4)}" fill="${c}"/>`};
+const tx=(x,y,s,c='#475569',a='middle')=>`<text x="${x}" y="${y}" font-size="11" text-anchor="${a}" fill="${c}">${s}</text>`;
+const dots=xs=>`<svg viewBox="0 0 320 60" class="fig"><line x1="8" y1="26" x2="312" y2="26" stroke="#cbd5e1"/>${xs.map(x=>`<circle cx="${x}" cy="26" r="7" fill="#6366f1"/>`).join('')}${tx(160,52,'Motion diagram (time interval between dots is equal) →')}</svg>`;
+function gr(xm,ym,L,o={}){const W=300,H=210,l=44,b=34,t=10,r=12,X=x=>l+x/xm*(W-l-r),Y=y=>H-b-y/ym*(H-b-t);let s=`<svg viewBox="0 0 ${W} ${H}" class="fig">`;
+for(let i=0;i<=xm;i+=o.dx||1)s+=`<line x1="${X(i)}" y1="${t}" x2="${X(i)}" y2="${H-b}" stroke="#e2e8f0"/>`+tx(X(i),H-b+13,i,'#64748b');
+for(let j=0;j<=ym;j+=o.dy||10)s+=`<line x1="${l}" y1="${Y(j)}" x2="${W-r}" y2="${Y(j)}" stroke="#e2e8f0"/>`+tx(l-5,Y(j)+4,j,'#64748b','end');
+s+=`<line x1="${l}" y1="${H-b}" x2="${W-r}" y2="${H-b}" stroke="#334155" stroke-width="2"/><line x1="${l}" y1="${t}" x2="${l}" y2="${H-b}" stroke="#334155" stroke-width="2"/>`+tx((l+W)/2,H-5,o.x||'Time (s)')+`<text transform="translate(11,${H/2}) rotate(-90)" font-size="11" text-anchor="middle" fill="#475569">${o.y||'Position (m)'}</text>`;
+L.forEach(q=>{s+=`<polyline points="${q.p.map(p=>X(p[0])+','+Y(p[1])).join(' ')}" fill="none" stroke="${q.c}" stroke-width="3"/>`+(q.d?q.p.map(p=>`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3.5" fill="${q.c}"/>`).join(''):'')+(q.n?(()=>{const a=q.p[0],z=q.p[q.p.length-1],px=X(a[0]+.85*(z[0]-a[0])),py=Y(a[1]+.85*(z[1]-a[1]));return `<circle cx="${px}" cy="${py}" r="10" fill="#fff" stroke="${q.c}" stroke-width="2.5"/><text x="${px}" y="${py+4.5}" font-size="13" font-weight="700" text-anchor="middle" fill="${q.c}">${q.n}</text>`})():'')});
+return s+(o.e||'')+'</svg>'}
+const Q=[
+{t:0,q:'The motion diagram shows a toy car. Which statement describes its motion?',f:dots([30,90,150,210,270]),o:['Speeding up','Slowing down','Constant speed','At rest'],a:2,e:'The dots are equally spaced, so equal distances in equal times: constant speed.'},
+{t:0,q:'A cyclist\'s motion diagram is shown. What is happening?',f:dots([20,120,200,255,285]),o:['Constant speed','Speeding up','At rest','Slowing down'],a:3,e:'The dots get closer together, so the distance per time interval shrinks: slowing down.'},
+{t:1,q:'Sara walks 6 m east, then 8 m north. What are her distance and displacement?',f:`<svg viewBox="0 0 220 150" class="fig">${ar(20,125,150,125,'#6366f1')}${ar(150,125,150,35,'#6366f1')}<line x1="20" y1="125" x2="150" y2="35" stroke="#f97316" stroke-width="2" stroke-dasharray="5"/>${tx(85,142,'6 m east')}${tx(190,85,'8 m north')}${tx(20,115,'Start','#10b981','start')}${tx(150,27,'End','#ef4444')}</svg>`,o:['Distance 14 m, displacement 10 m','Distance 10 m, displacement 14 m','Distance 14 m, displacement 14 m','Distance 10 m, displacement 0 m'],a:0,e:'Distance = 6 + 8 = 14 m. Displacement = straight line = √(6²+8²) = 10 m.'},
+{t:1,q:'A runner completes one full 400 m track lap and ends where she started. What are her distance and displacement?',f:`<svg viewBox="0 0 220 110" class="fig"><rect x="30" y="20" width="160" height="70" rx="35" fill="#dcfce7" stroke="#10b981" stroke-width="3"/>${tx(110,60,'400 m lap 🏃‍♀️')}${tx(32,15,'Start/Finish','#ef4444','start')}</svg>`,o:['0 m and 400 m','400 m and 400 m','400 m and 0 m','200 m and 200 m'],a:2,e:'She covered 400 m of path (distance), but her final position equals her start, so displacement = 0.'},
+{t:1,q:'Lina times how long ice cubes of different volumes take to melt at room temperature. What is the independent variable?',f:'',o:['Time to melt','Volume of the ice cube','Room temperature','Colour of the ice'],a:1,e:'She changes the volume (independent) and measures melting time (dependent). Room temperature is kept constant.'},
+{t:2,q:'Which of these is a vector quantity?',f:'',o:['Mass','Speed','Displacement','Temperature'],a:2,e:'Displacement has magnitude and direction, so it is a vector. The others are scalars.'},
+{t:2,q:'Two forces act on a box as shown: 7 N east and 3 N west. What is the resultant force?',f:`<svg viewBox="0 0 300 70" class="fig"><rect x="125" y="20" width="50" height="30" fill="#fde68a" stroke="#f59e0b"/>${ar(175,35,260,35,'#6366f1')}${ar(125,35,95,35,'#ef4444')}${tx(218,28,'7 N')}${tx(104,28,'3 N')}${tx(280,62,'East →')}</svg>`,o:['10 N east','4 N west','4 N east','21 N east'],a:2,e:'Opposite directions subtract: 7 − 3 = 4 N, in the direction of the bigger force (east).'},
+{t:3,q:'Use the position-time graph. What is the slope (velocity) of the line?',f:gr(10,40,[{p:[[0,0],[10,40]],c:'#6366f1',d:1}],{dx:2}),o:['0.25 m/s','4 m/s','40 m/s','10 m/s'],a:1,e:'Slope = Δx ÷ Δt = (40 − 0) ÷ (10 − 0) = 4 m/s.'},
+{t:3,q:'What does this position-time graph tell you about the object?',f:gr(8,40,[{p:[[0,20],[8,20]],c:'#ef4444',d:1}],{}),o:['Moving at constant velocity','Speeding up','At rest','Moving backward'],a:2,e:'The position does not change as time passes: slope = 0, so the object is at rest.'},
+{t:3,q:'Which object is faster, A or B?',f:gr(10,50,[{p:[[0,0],[10,20]],c:'#10b981',n:'A'},{p:[[0,0],[10,50]],c:'#f59e0b',n:'B'}],{}),o:['A, its line is steeper','B, its line is steeper','They have the same speed','Cannot tell'],a:1,e:'B\'s line is steeper: slope 50÷10 = 5 m/s vs A\'s 2 m/s.'}];
+const F=[
+{q:'Layla walks along a straight corridor. Her data: Time (s) 0, 10, 20, 30, 40, 50 and Position (m) 0, 8, 16, 24, 32, 40.',f:`<table class="tb"><tr><th>Time (s)</th><td>0</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr><tr><th>Position (m)</th><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td></tr></table>`,
+ p:[{t:3,q:'a) Plot the position-time graph on the grid below. Click each (time, position) point, then press Join points.',pl:{xm:50,ym:40,dx:10,dy:4,ex:[[0,0],[10,8],[20,16],[30,24],[40,32],[50,40]]},a:'Time on the x-axis, position on the y-axis, with units. Plot each pair and draw one straight line through the origin.',g:gr(50,40,[{p:[[0,0],[10,8],[20,16],[30,24],[40,32],[50,40]],c:'#a855f7',d:1}],{dx:10,dy:10})},
+ {t:3,q:'b) Calculate the slope using two points on the line. Include units.',a:'Using (10 s, 8 m) and (40 s, 32 m): slope = (32 − 8) ÷ (40 − 10) = 24 ÷ 30 = 0.8 m/s.'},
+ {t:3,q:'c) Is the graph linear, non-linear, inverse or quadratic? What does it mean?',a:'Linear: a straight line through the origin means constant velocity of 0.8 m/s.'}]},
+{q:'Two drivers, A and B, travel in opposite directions on a straight road at different constant velocities. Study the position-time graph.',f:gr(5,100,[{p:[[0,0],[5,100]],c:'#10b981',n:'A'},{p:[[1,100],[4,10]],c:'#f59e0b',n:'B'}],{x:'Time (h)',y:'Position (km)',dy:20,e:'<circle cx="'+(44+2.6/5*244)+'" cy="'+(176-52/100*166)+'" r="5" fill="#ef4444"/>'+tx(44+2.6/5*244+14,176-52/100*166-8,'P','#ef4444')}),
+ p:[{t:3,q:'a) How long had A been driving when B started?',a:'B\'s line starts at t = 1 h, so A had been driving for 1 hour.'},
+ {t:3,q:'b) Which driver is faster? Show the calculation for both.',a:'A: 100 ÷ 5 = 20 km/h. B: |10 − 100| ÷ (4 − 1) = 30 km/h. B is faster (steeper line).'},
+ {t:1,q:'c) What happens at point P (about 2.6 h, 52 km)?',a:'The two lines cross: both drivers are at the same position at the same time, so they meet and pass each other.'},{t:3,q:'d) Plot Driver A on the grid: A starts at 0 km and travels at 20 km/h. Click the position at 0, 1, 2, 3, 4 and 5 h, then join the points.',pl:{xm:5,ym:100,dx:1,dy:20,ex:[[0,0],[1,20],[2,40],[3,60],[4,80],[5,100]],x:'Time (h)',y:'Position (km)'},a:'Position = 20 x time, so the points are (0,0), (1,20), (2,40), (3,60), (4,80), (5,100): a straight line through the origin.'}]},
+{q:'A student walks 6 m east, then 8 m north, then 6 m west.',f:`<svg viewBox="0 0 220 160" class="fig">${ar(40,140,130,140,'#6366f1')}${ar(130,140,130,50,'#6366f1')}${ar(130,50,40,50,'#6366f1')}<line x1="40" y1="140" x2="40" y2="55" stroke="#f97316" stroke-width="2" stroke-dasharray="5"/>${tx(85,155,'6 m east')}${tx(175,95,'8 m north')}${tx(85,42,'6 m west')}${tx(40,128,'Start','#10b981','end')}${tx(40,40,'End','#ef4444','end')}</svg>`,
+ p:[{t:1,q:'a) Find the total distance walked.',a:'Distance = 6 + 8 + 6 = 20 m.'},
+ {t:1,q:'b) Find the magnitude and direction of her displacement.',a:'The east and west legs cancel, so displacement = 8 m north.'},
+ {t:2,q:'c) Why is displacement a vector but distance a scalar?',a:'Displacement has size and direction (8 m north). Distance has size only (20 m).'}]}];
+const $=s=>document.getElementById(s);let nm='',xp=0,st=0,best=0,done=0,res=[],ch=[],fr={},fin=null;
+const QS=['Recognising constant speed from equally spaced dots','Recognising slowing down from dots getting closer','Finding distance and displacement for a two-leg path','Distance vs displacement when returning to the start','Identifying the independent variable in an experiment','Classifying a quantity as vector or scalar','Finding the resultant of opposite forces','Calculating slope (velocity) from a position-time graph','Reading a flat position-time line as "at rest"','Comparing speeds from the steepness of lines'];
+[['Plotting points and drawing a position-time graph','Calculating slope from two points with units','Naming the graph type and what it means'],['Reading a start time from a graph','Calculating and comparing velocities of two objects','Explaining what the crossing point means','Plotting a constant-velocity graph from a rule'],['Adding up total distance for a path','Finding displacement size and direction','Explaining why displacement is a vector']].forEach((a,i)=>a.forEach((k,j)=>F[i].p[j].k=k));
+const PT={},JN={},MSG={};
+const lvl=()=>xp<30?'Rookie Explorer 🌱':xp<60?'Motion Cadet 🛰️':xp<90?'Physics Pilot 🚀':'Galaxy Genius 🌌';
+function start(){nm=$('nm').value.trim();if(!nm){$('nm').focus();$('nm').placeholder='Please type your name first 😊';return}$('app').style.display='block';scrollTo({top:300,behavior:'smooth'});
+$('rev').innerHTML=T.map(t=>`<div class="card tc" style="--c:${t.c}"><div style="font-size:26px">${t.i}</div><h3>${t.n}</h3><ul>${t.r.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+$('mcq').innerHTML=Q.map((q,i)=>`<div class="card q" style="--c:${T[q.t].c}"><div class="tag">Q${i+1} · ${T[q.t].i} ${T[q.t].n} · 10 XP</div><p>${q.q}</p>${q.f}${q.o.map((o,j)=>`<button class="opt" onclick="pick(${i},${j})">${'ABCD'[j]}. ${o}</button>`).join('')}<div class="fb" id="fb${i}"></div></div>`).join('');
+$('frq').innerHTML=F.map((f,i)=>`<div class="card" style="margin:14px 0;border-top:6px solid #ec4899"><b>Challenge ${i+1}</b><p>${f.q}</p>${f.f}${f.p.map((p,j)=>`<div style="margin-top:12px"><b>${p.q}</b>${p.pl?`<div id="pl${i}_${j}"></div>`:''}<textarea placeholder="Show your working…"></textarea><button class="btn" style="padding:6px 14px;font-size:13px;margin:6px 0" onclick="chk(${i},${j})">Check ✔</button><div class="ans" id="a${i}_${j}">✅ <b>Model answer:</b> ${p.a}${p.g||''}<br>Your self-mark: <select id="s${i}_${j}" onchange="mk(${i},${j},this.value)"><option value="">Choose…</option><option value="1">I got it! ⭐</option><option value="0">Not yet 🔧</option></select></div></div>`).join('')}</div>`).join('');F.forEach((f,i)=>f.p.forEach((p,j)=>p.pl&&plr(i+'_'+j)))}
+const GW=320,GH=230,GL=44,GB=34,GT=10,GR=12;
+function plr(k){const[i,j]=k.split('_'),o=F[i].p[j].pl,X=x=>GL+x/o.xm*(GW-GL-GR),Y=y=>GH-GB-y/o.ym*(GH-GB-GT);const pts=PT[k]=PT[k]||[];
+let s=`<svg viewBox="0 0 ${GW} ${GH}" class="fig" style="max-width:500px;cursor:crosshair;touch-action:manipulation" onclick="pc(event,'${k}')"><rect width="${GW}" height="${GH}" fill="#fffef5"/>`;
+for(let a=0;a<=o.xm;a+=o.dx)s+=`<line x1="${X(a)}" y1="${GT}" x2="${X(a)}" y2="${GH-GB}" stroke="#cbd5e1"/>`+tx(X(a),GH-GB+13,a,'#64748b');
+for(let c=0;c<=o.ym;c+=o.dy)s+=`<line x1="${GL}" y1="${Y(c)}" x2="${GW-GR}" y2="${Y(c)}" stroke="#cbd5e1"/>`+tx(GL-5,Y(c)+4,c,'#64748b','end');
+s+=`<line x1="${GL}" y1="${GH-GB}" x2="${GW-GR}" y2="${GH-GB}" stroke="#334155" stroke-width="2"/><line x1="${GL}" y1="${GT}" x2="${GL}" y2="${GH-GB}" stroke="#334155" stroke-width="2"/>`+tx((GL+GW)/2,GH-5,o.x||'Time (s)')+`<text transform="translate(11,${GH/2}) rotate(-90)" font-size="11" text-anchor="middle" fill="#475569">${o.y||'Position (m)'}</text>`;
+const so=[...pts].sort((a,b)=>a[0]-b[0]);if(JN[k]&&so.length>1)s+=`<polyline points="${so.map(q=>X(q[0])+','+Y(q[1])).join(' ')}" fill="none" stroke="#a855f7" stroke-width="3"/>`;
+pts.forEach(q=>s+=`<circle cx="${X(q[0])}" cy="${Y(q[1])}" r="5" fill="#ec4899" stroke="#fff"/>`);
+const bt=(f,l)=>`<button class="btn" style="padding:5px 12px;font-size:13px;margin:3px" onclick="${f}('${k}')">${l}</button>`;
+$('pl'+k).innerHTML=s+'</svg><div style="text-align:center">'+bt('pj','Join points ➖')+bt('pu','Undo ↩')+bt('pk','Check my plot ✅')+bt('px','Clear 🗑️')+`<div style="font-weight:700;margin:6px">${MSG[k]||'👆 Click on a grid crossing to place a point. Click a point again to remove it.'}</div></div>`}
+function pc(e,k){const[i,j]=k.split('_'),o=F[i].p[j].pl,r=e.currentTarget.getBoundingClientRect(),sx=(e.clientX-r.left)/r.width*GW,sy=(e.clientY-r.top)/r.height*GH;
+let x=(sx-GL)/(GW-GL-GR)*o.xm,y=(GH-GB-sy)/(GH-GB-GT)*o.ym;x=Math.min(o.xm,Math.max(0,Math.round(x/o.dx)*o.dx));y=Math.min(o.ym,Math.max(0,Math.round(y/o.dy)*o.dy));
+const p=PT[k],n=p.findIndex(q=>q[0]==x&&q[1]==y);n>=0?p.splice(n,1):p.push([x,y]);MSG[k]=`Point (${x}, ${y}) ${n>=0?'removed':'placed'}.`;plr(k)}
+function pj(k){JN[k]=!JN[k];MSG[k]=JN[k]?'Points joined. Does it look like a straight line?':'Line removed.';plr(k)}
+function pu(k){PT[k].pop();MSG[k]='Last point removed.';plr(k)}
+function px(k){PT[k]=[];JN[k]=false;MSG[k]='Grid cleared. Start again!';plr(k)}
+function pk(k){const[i,j]=k.split('_'),o=F[i].p[j].pl,p=PT[k],ok=o.ex.filter(e=>p.some(q=>q[0]==e[0]&&q[1]==e[1])).length,ex=p.length-ok;let m;
+if(ok==o.ex.length&&!ex&&JN[k]){m='🌟 Perfect! All '+ok+' points are correct and joined.';if(fr[k]===undefined){$('s'+k).value='1';mk(i,j,'1')}boom(12)}
+else if(ok==o.ex.length&&!ex)m='✅ All points are correct! Now press "Join points" to draw the line.';
+else m=`You have ${ok} of ${o.ex.length} points correct`+(ex?` and ${ex} extra or wrong point(s)`:'')+'. Re-read the data and check each (x, y) pair.';
+MSG[k]=m;plr(k)}
+function hud(){$('xp').textContent=xp;$('st').textContent=st;$('lv').textContent=lvl();const p=done/10*100;$('pb').style.width=p+'%';$('rk').style.left=p+'%';$('pg').textContent=done+'/10'}
+const good=['🌟 Brilliant!','🎉 Yes! Physics hero!','🔥 You\'re on fire!','💯 Spot on!'],bad=['💡 Good try! Read the tip, you\'ll get the next one.','🌱 Mistakes help brains grow. Check the explanation!'];
+function pick(i,j){if(res[i]!==undefined)return;const q=Q[i],ok=j===q.a;res[i]=ok;ch[i]=j;done++;document.querySelectorAll('#mcq .q')[i].querySelectorAll('.opt').forEach((b,k)=>{b.disabled=true;if(k===q.a)b.classList.add('ok');else if(k===j)b.classList.add('no')});
+if(ok){xp+=10;st++;best=Math.max(best,st);$('msg').textContent=good[i%4]+(st>2?` ${st} in a row!`:'');if(st%3==0||done==10)boom()}else{st=0;$('msg').textContent=bad[i%2]}
+const fb=$('fb'+i);fb.style.display='block';fb.innerHTML=(ok?'✅ Correct! ':'❌ Not quite. ')+q.e;hud()}
+function chk(i,j){$(`a${i}_${j}`).style.display='block'}
+function mk(i,j,v){const k=i+'_'+j;if(v==='')delete fr[k];else{if(fr[k]===undefined&&v==='1'){xp+=5;boom(8)}else if(fr[k]==='1'&&v!=='1')xp-=5;fr[k]=v}hud()}
+function boom(n=26){for(let i=0;i<n;i++){const s=document.createElement('span');s.className='cf';s.textContent=['⭐','🎉','✨','🌈','🏅'][i%5];s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3500)}}
+const st_=p=>p>=80?['Mastered','#10b981']:p>=50?['Review','#f59e0b']:['Needs Work','#ef4444'];
+function finish(){if(done<10&&!confirm('You have unanswered MCQs. Finish anyway?'))return;
+const s=T.map(()=>({c:0,n:0})),SK=[],WK=[];
+Q.forEach((q,i)=>{if(res[i]===undefined)return;s[q.t].n++;const o={t:q.t,s:QS[i],q:'Q'+(i+1)};if(res[i]){s[q.t].c++;SK.push(o)}else WK.push({...o,you:q.o[ch[i]],right:q.o[q.a],why:q.e})});
+F.forEach((f,i)=>f.p.forEach((p,j)=>{const v=fr[i+'_'+j];if(v===undefined)return;s[p.t].n++;const o={t:p.t,s:p.k,q:'Challenge '+(i+1)+'.'+'abcd'[j]};if(v==='1'){s[p.t].c++;SK.push(o)}else WK.push({...o,you:'You marked this "Not yet"',right:p.a,why:''})}));
+const mc=res.filter(Boolean).length;fin=T.map((t,k)=>{const p=s[k].n?Math.round(s[k].c/s[k].n*100):null;return{...t,...s[k],p,s:p===null?['Not attempted','#94a3b8']:st_(p)}});fin.SK=SK;fin.WK=WK;
+const bg=[['🕵️ Dot Detective',0],['🧭 Path Pro',1],['➡️ Vector Victor',2],['📊 Graph Guru',3]].map(([n,k])=>[n,fin[k].p>=80]).concat([['💯 Perfect 10',mc==10],['🔥 Streak x5',best>=5],['🧠 Honest Thinker',Object.keys(fr).length>=5]]);fin.badges=bg.filter(b=>b[1]).map(b=>b[0].replace(/^\S+\s/,''));fin.mc=mc;
+const sh=fin.map((t,k)=>{const a=SK.filter(o=>o.t==k);return a.length?`<li><b>${t.i} ${t.n}</b><ul>${a.map(o=>`<li>✅ ${o.s} <small>(${o.q})</small></li>`).join('')}</ul></li>`:''}).join('')||'<li>No fully correct skills yet. Review the cards and try again!</li>';
+const wh=fin.map((t,k)=>{const a=WK.filter(o=>o.t==k);return a.length?`<li><b>${t.i} ${t.n}</b><ul>${a.map(o=>`<li>❌ <b>${o.s}</b> <small>(${o.q})</small><br><small>${o.you?'<i>'+o.you+'</i><br>':''}Correct: <b>${o.right}</b>${o.why?'<br>Why: '+o.why:''}</small></li>`).join('')}</ul><div style="background:#fff7e0;border-radius:10px;padding:6px 10px;font-size:13px">🛠️ <b>How to improve:</b> ${t.tip}</div></li>`:''}).join('')||'<li>No weak spots found. Great job!</li>';
+$('rc').innerHTML=`<h3 style="margin-top:0">${nm}: ${mc}/10 MCQs · ${xp} XP · ${lvl()}</h3>`+fin.map(t=>`<div style="margin:12px 0"><b>${t.i} ${t.n}</b> <span class="pill" style="background:${t.s[1]}">${t.s[0]}</span> ${t.p===null?'':t.p+'% ('+t.c+' of '+t.n+' correct)'}<div class="rb"><i style="width:${t.p||0}%;background:${t.s[1]}"></i></div></div>`).join('')+`<h3 style="color:#059669">💪 My Strengths (what I can do)</h3><ul>${sh}</ul><h3 style="color:#dc2626">🎯 My Weaknesses (what to fix)</h3><ul>${wh}</ul>`;
+$('bd').innerHTML=bg.map(b=>`<span class="badge ${b[1]?'':'lock'}">${b[0]}</span>`).join('');$('res').style.display='block';boom(40);$('res').scrollIntoView({behavior:'smooth'})}
+async function pdf(){if(!fin)return;const{jsPDF}=window.jspdf,d=new jsPDF(),W=210;let y=20;
+const cl=s=>String(s).replace(/√/g,'sqrt').replace(/Δ/g,'change in ').replace(/²/g,'^2').replace(/[−–]/g,'-').replace(/→/g,'->').replace(/<[^>]+>/g,'').replace(/[^\x20-\xFF]/g,'');
+const P=(s,x=14,sz=10,b=0,c=[38,50,77])=>{d.setFontSize(sz);d.setFont('helvetica',b?'bold':'normal');d.setTextColor(c[0],c[1],c[2]);d.splitTextToSize(cl(s),W-x-12).forEach(l=>{if(y>280){d.addPage();y=20}d.text(l,x,y);y+=sz*.42+1.6})};
+const HD=(s,c)=>{if(y>262){d.addPage();y=20}y+=3;d.setFillColor(c[0],c[1],c[2]);d.rect(14,y-5,182,8,'F');d.setFontSize(11);d.setFont('helvetica','bold');d.setTextColor(255,255,255);d.text(cl(s),17,y+.6);y+=9};
+d.setFillColor(99,102,241);d.rect(0,0,W,34,'F');d.setTextColor(255,255,255);d.setFontSize(18);d.setFont('helvetica','bold');d.text('Physics Remedial Report',14,15);d.setFontSize(10);d.setFont('helvetica','normal');d.text("Al Rashidiya Girls' School - Grade 9 Advance - Quiz 2 Term 1 (2026-27)",14,25);
+y=46;P('Student: '+nm,14,13,1);y-=1;P('Date: '+new Date().toLocaleDateString()+'     MCQs correct: '+fin.mc+'/10     XP earned: '+xp+'     Level: '+lvl().replace(/\s\S+$/,''));y+=2;
+HD('TOPIC MASTERY',[99,102,241]);
+fin.forEach(t=>{if(y>268){d.addPage();y=20}d.setFontSize(10);d.setFont('helvetica','bold');d.setTextColor(38,50,77);d.text(cl(t.n),14,y);d.setFont('helvetica','normal');d.text(t.p===null?'Not attempted':t.p+'% - '+t.s[0]+' ('+t.c+' of '+t.n+' correct)',110,y);d.setFillColor(229,231,235);d.rect(14,y+2,182,4,'F');const h=t.s[1];d.setFillColor(parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16));d.rect(14,y+2,1.82*(t.p||0),4,'F');y+=13});
+HD('STRENGTHS: what you can already do',[16,185,129]);
+if(!fin.SK.length)P('No skills fully correct yet. Review the cards and try again.',16);
+fin.forEach((t,k)=>{const a=fin.SK.filter(o=>o.t==k);if(!a.length)return;P(t.n,16,10,1);a.forEach(o=>P('+ '+o.s+' ('+o.q+')',20))});
+HD('WEAKNESSES: what to work on',[239,68,68]);
+if(!fin.WK.length)P('No weak spots found. Great job!',16);
+fin.forEach((t,k)=>{const a=fin.WK.filter(o=>o.t==k);if(!a.length)return;P(t.n,16,10,1);a.forEach(o=>{P('- '+o.s+' ('+o.q+')',20,10,1,[185,28,28]);if(o.you)P('Your answer: '+o.you,24,9);P('Correct: '+o.right,24,9);if(o.why)P('Why: '+o.why,24,9);y+=1.5});P('How to improve: '+t.tip,20,9,1,[146,96,0]);y+=3});
+HD('BADGES EARNED',[245,158,11]);P(fin.badges.join('  |  ')||'Keep going, your first badge is close!',16);y+=8;
+P('Teacher comment: ______________________________________________________',14);y+=4;P('Parent signature: ________________',14);y+=6;P('Every expert was once a beginner. Keep practising!',14,9,0,[100,100,100]);
+const blob=d.output('blob'),fn='Physics_Remedial_'+nm.replace(/\W+/g,'_')+'.pdf';try{const dl=await claude.use('downloads');if(!dl){$('dm').textContent='Download is not available in this view. Please open the page in claude.ai.';return}await dl.save({filename:fn,data:blob});$('dm').textContent='Report ready! 🎉'}catch(e){$('dm').textContent=e&&e.code==='declined'?'Download cancelled. Press the button again when ready.':'Could not save the PDF. Try again.'}}
+</script></body></html>
