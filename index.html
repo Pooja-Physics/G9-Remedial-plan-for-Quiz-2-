@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Physics Remedial Mission – Grade 9 Advance</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
@@ -55,7 +56,7 @@ select{padding:6px;border-radius:8px;border:2px solid #c7d2fe;margin-top:4px}
 <h2>📚 Quick Review Cards</h2><div class="grid" id="rev"></div>
 <h2>🎯 Part A: 10 Practice MCQs</h2><div id="mcq"></div>
 <h2>🧠 Part B: 3 Challenge Questions</h2>
-<p style="color:var(--mut)">Write your working in the box, press <b>Check</b>, then mark yourself honestly. Honest marking = real progress!</p><div id="frq"></div>
+<p style="color:var(--mut)">Write your working in the box, press <b>Submit</b>, and only then will the <b>Check</b> button appear with the model answer so you can mark yourself honestly. Honest marking = real progress!</p><div id="frq"></div>
 <div style="text-align:center;margin:24px"><button class="btn alt" onclick="finish()">🏁 Finish &amp; see my report</button></div>
 
 <div id="res"><h2>🏆 My Progress Report</h2><div class="card" id="rc"></div>
@@ -104,12 +105,12 @@ const F=[
 const $=s=>document.getElementById(s);let nm='',xp=0,st=0,best=0,done=0,res=[],ch=[],fr={},fin=null;
 const QS=['Recognising constant speed from equally spaced dots','Recognising slowing down from dots getting closer','Finding distance and displacement for a two-leg path','Distance vs displacement when returning to the start','Identifying the independent variable in an experiment','Classifying a quantity as vector or scalar','Finding the resultant of opposite forces','Calculating slope (velocity) from a position-time graph','Reading a flat position-time line as "at rest"','Comparing speeds from the steepness of lines'];
 [['Plotting points and drawing a position-time graph','Calculating slope from two points with units','Naming the graph type and what it means'],['Reading a start time from a graph','Calculating and comparing velocities of two objects','Explaining what the crossing point means','Plotting a constant-velocity graph from a rule'],['Adding up total distance for a path','Finding displacement size and direction','Explaining why displacement is a vector']].forEach((a,i)=>a.forEach((k,j)=>F[i].p[j].k=k));
-const PT={},JN={},MSG={};
+const PT={},JN={},MSG={},SUB={};
 const lvl=()=>xp<30?'Rookie Explorer 🌱':xp<60?'Motion Cadet 🛰️':xp<90?'Physics Pilot 🚀':'Galaxy Genius 🌌';
 function start(){nm=$('nm').value.trim();if(!nm){$('nm').focus();$('nm').placeholder='Please type your name first 😊';return}$('app').style.display='block';scrollTo({top:300,behavior:'smooth'});
 $('rev').innerHTML=T.map(t=>`<div class="card tc" style="--c:${t.c}"><div style="font-size:26px">${t.i}</div><h3>${t.n}</h3><ul>${t.r.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
 $('mcq').innerHTML=Q.map((q,i)=>`<div class="card q" style="--c:${T[q.t].c}"><div class="tag">Q${i+1} · ${T[q.t].i} ${T[q.t].n} · 10 XP</div><p>${q.q}</p>${q.f}${q.o.map((o,j)=>`<button class="opt" onclick="pick(${i},${j})">${'ABCD'[j]}. ${o}</button>`).join('')}<div class="fb" id="fb${i}"></div></div>`).join('');
-$('frq').innerHTML=F.map((f,i)=>`<div class="card" style="margin:14px 0;border-top:6px solid #ec4899"><b>Challenge ${i+1}</b><p>${f.q}</p>${f.f}${f.p.map((p,j)=>`<div style="margin-top:12px"><b>${p.q}</b>${p.pl?`<div id="pl${i}_${j}"></div>`:''}<textarea placeholder="Show your working…"></textarea><button class="btn" style="padding:6px 14px;font-size:13px;margin:6px 0" onclick="chk(${i},${j})">Check ✔</button><div class="ans" id="a${i}_${j}">✅ <b>Model answer:</b> ${p.a}${p.g||''}<br>Your self-mark: <select id="s${i}_${j}" onchange="mk(${i},${j},this.value)"><option value="">Choose…</option><option value="1">I got it! ⭐</option><option value="0">Not yet 🔧</option></select></div></div>`).join('')}</div>`).join('');F.forEach((f,i)=>f.p.forEach((p,j)=>p.pl&&plr(i+'_'+j)))}
+$('frq').innerHTML=F.map((f,i)=>`<div class="card" style="margin:14px 0;border-top:6px solid #ec4899"><b>Challenge ${i+1}</b><p>${f.q}</p>${f.f}${f.p.map((p,j)=>`<div style="margin-top:12px"><b>${p.q}</b>${p.pl?`<div id="pl${i}_${j}"></div>`:''}<textarea id="t${i}_${j}" placeholder="Show your working…"></textarea><div id="sm${i}_${j}"></div><button class="btn" id="sb${i}_${j}" style="padding:6px 14px;font-size:13px;margin:6px 0" onclick="sub(${i},${j})">Submit answer 📤</button><button class="btn alt" id="cb${i}_${j}" style="display:none;padding:6px 14px;font-size:13px;margin:6px 0" onclick="chk(${i},${j})">Check ✔</button><div class="ans" id="a${i}_${j}">✅ <b>Model answer:</b> ${p.a}${p.g||''}<br>Your self-mark: <select id="s${i}_${j}" onchange="mk(${i},${j},this.value)"><option value="">Choose…</option><option value="1">I got it! ⭐</option><option value="0">Not yet 🔧</option></select></div></div>`).join('')}</div>`).join('');F.forEach((f,i)=>f.p.forEach((p,j)=>p.pl&&plr(i+'_'+j)))}
 const GW=320,GH=230,GL=44,GB=34,GT=10,GR=12;
 function plr(k){const[i,j]=k.split('_'),o=F[i].p[j].pl,X=x=>GL+x/o.xm*(GW-GL-GR),Y=y=>GH-GB-y/o.ym*(GH-GB-GT);const pts=PT[k]=PT[k]||[];
 let s=`<svg viewBox="0 0 ${GW} ${GH}" class="fig" style="max-width:500px;cursor:crosshair;touch-action:manipulation" onclick="pc(event,'${k}')"><rect width="${GW}" height="${GH}" fill="#fffef5"/>`;
@@ -119,8 +120,8 @@ s+=`<line x1="${GL}" y1="${GH-GB}" x2="${GW-GR}" y2="${GH-GB}" stroke="#334155" 
 const so=[...pts].sort((a,b)=>a[0]-b[0]);if(JN[k]&&so.length>1)s+=`<polyline points="${so.map(q=>X(q[0])+','+Y(q[1])).join(' ')}" fill="none" stroke="#a855f7" stroke-width="3"/>`;
 pts.forEach(q=>s+=`<circle cx="${X(q[0])}" cy="${Y(q[1])}" r="5" fill="#ec4899" stroke="#fff"/>`);
 const bt=(f,l)=>`<button class="btn" style="padding:5px 12px;font-size:13px;margin:3px" onclick="${f}('${k}')">${l}</button>`;
-$('pl'+k).innerHTML=s+'</svg><div style="text-align:center">'+bt('pj','Join points ➖')+bt('pu','Undo ↩')+bt('pk','Check my plot ✅')+bt('px','Clear 🗑️')+`<div style="font-weight:700;margin:6px">${MSG[k]||'👆 Click on a grid crossing to place a point. Click a point again to remove it.'}</div></div>`}
-function pc(e,k){const[i,j]=k.split('_'),o=F[i].p[j].pl,r=e.currentTarget.getBoundingClientRect(),sx=(e.clientX-r.left)/r.width*GW,sy=(e.clientY-r.top)/r.height*GH;
+$('pl'+k).innerHTML=s+'</svg><div style="text-align:center">'+(SUB[k]?bt('pk','Check my plot ✅'):bt('pj','Join points ➖')+bt('pu','Undo ↩')+bt('px','Clear 🗑️'))+`<div style="font-weight:700;margin:6px">${MSG[k]||(SUB[k]?'Plot submitted. Press Check my plot to see feedback.':'👆 Click on a grid crossing to place a point. Click a point again to remove it.')}</div></div>`}
+function pc(e,k){if(SUB[k])return;const[i,j]=k.split('_'),o=F[i].p[j].pl,r=e.currentTarget.getBoundingClientRect(),sx=(e.clientX-r.left)/r.width*GW,sy=(e.clientY-r.top)/r.height*GH;
 let x=(sx-GL)/(GW-GL-GR)*o.xm,y=(GH-GB-sy)/(GH-GB-GT)*o.ym;x=Math.min(o.xm,Math.max(0,Math.round(x/o.dx)*o.dx));y=Math.min(o.ym,Math.max(0,Math.round(y/o.dy)*o.dy));
 const p=PT[k],n=p.findIndex(q=>q[0]==x&&q[1]==y);n>=0?p.splice(n,1):p.push([x,y]);MSG[k]=`Point (${x}, ${y}) ${n>=0?'removed':'placed'}.`;plr(k)}
 function pj(k){JN[k]=!JN[k];MSG[k]=JN[k]?'Points joined. Does it look like a straight line?':'Line removed.';plr(k)}
@@ -136,6 +137,9 @@ const good=['🌟 Brilliant!','🎉 Yes! Physics hero!','🔥 You\'re on fire!',
 function pick(i,j){if(res[i]!==undefined)return;const q=Q[i],ok=j===q.a;res[i]=ok;ch[i]=j;done++;document.querySelectorAll('#mcq .q')[i].querySelectorAll('.opt').forEach((b,k)=>{b.disabled=true;if(k===q.a)b.classList.add('ok');else if(k===j)b.classList.add('no')});
 if(ok){xp+=10;st++;best=Math.max(best,st);$('msg').textContent=good[i%4]+(st>2?` ${st} in a row!`:'');if(st%3==0||done==10)boom()}else{st=0;$('msg').textContent=bad[i%2]}
 const fb=$('fb'+i);fb.style.display='block';fb.innerHTML=(ok?'✅ Correct! ':'❌ Not quite. ')+q.e;hud()}
+function sub(i,j){const k=i+'_'+j,p=F[i].p[j],tv=$('t'+k).value.trim(),m=$('sm'+k);
+if(p.pl?!(PT[k]&&PT[k].length&&JN[k]):!tv){m.innerHTML='<small style="color:#dc2626">'+(p.pl?'✍️ Plot your points and press Join points before submitting.':'✍️ Please write your answer before submitting.')+'</small>';return}
+SUB[k]=1;$('t'+k).disabled=true;$('sb'+k).style.display='none';$('cb'+k).style.display='inline-block';m.innerHTML='<small style="color:#059669">✅ Answer submitted! Press Check to see the model answer.</small>';if(p.pl)plr(k)}
 function chk(i,j){$(`a${i}_${j}`).style.display='block'}
 function mk(i,j,v){const k=i+'_'+j;if(v==='')delete fr[k];else{if(fr[k]===undefined&&v==='1'){xp+=5;boom(8)}else if(fr[k]==='1'&&v!=='1')xp-=5;fr[k]=v}hud()}
 function boom(n=26){for(let i=0;i<n;i++){const s=document.createElement('span');s.className='cf';s.textContent=['⭐','🎉','✨','🌈','🏅'][i%5];s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3500)}}
@@ -168,3 +172,5 @@ HD('BADGES EARNED',[245,158,11]);P(fin.badges.join('  |  ')||'Keep going, your f
 P('Teacher comment: ______________________________________________________',14);y+=4;P('Parent signature: ________________',14);y+=6;P('Every expert was once a beginner. Keep practising!',14,9,0,[100,100,100]);
 const blob=d.output('blob'),fn='Physics_Remedial_'+nm.replace(/\W+/g,'_')+'.pdf';try{const dl=await claude.use('downloads');if(!dl){$('dm').textContent='Download is not available in this view. Please open the page in claude.ai.';return}await dl.save({filename:fn,data:blob});$('dm').textContent='Report ready! 🎉'}catch(e){$('dm').textContent=e&&e.code==='declined'?'Download cancelled. Press the button again when ready.':'Could not save the PDF. Try again.'}}
 </script></body></html>
+
+</body></html>
